@@ -13,17 +13,28 @@
   <header class="header">
     <h1 class="header__title">Didlydoo project</h1>
     <div class="header__div">
-      <input class="header__div__imput" type="text" placeholder="Your name" required>
-      <input class="header__div__input" type="text" placeholder="Add an event" required>
-      <input class="header__div__input" type="text" placeholder="Description" required>
+      <label id="author">Author:</label>
+      <input class="header__div__input" type="text" placeholder="Your name" id="inputAuthor" required>
+
+      <label id="name">Event:</label>
+      <input class="header__div__input" type="text" placeholder="Your event" id="inputTitle" required>
+
+      <label id="description">Description:</label>
+      <input class="header__div__input" type="text" placeholder="Describes an event" id="inputDescription" required>
+
+      <label id="dates">Dates:</label>
       <input class="header__div__date" type="date" name="date" id="date">
-      <input class="header__div__submit"  type="submit" value="Add an event"> 
+      <button id="addDateBtn">Ajouter une date</button>
+
+
+      <input id="submitBtn" class="header__div__submit" type="submit" value="Add an event" />
     </div>
   </header>
   <main class="container"></main>
   <div id="app"></div>
-  <script type="module" src="/main.js"></script>
-  <script src="assets/modulejs/header.js"></script>
+  <script type="module" src="assets/modulejs/header.js" defer></script>
+  <script type="module" src="/main.js" defer></script>
+
 </body>
 
 </html>
