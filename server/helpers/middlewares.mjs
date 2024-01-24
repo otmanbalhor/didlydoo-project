@@ -30,6 +30,10 @@ export const validation = schema => (req, res, next) => {
 
 export const getElem = async (req, res, next) => {
   const db = await getDB()
+
+  //
+  //findIndex renvoie -1 si elle ne trouve pas l'element recherché dans le tab
+  //
   const _elem = db.data.findIndex(x => x.id === req.params._id)
 
   if(_elem === -1)

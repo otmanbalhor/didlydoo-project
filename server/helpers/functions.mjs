@@ -5,6 +5,9 @@ import { Low, JSONFile } from 'lowdb'
 
 const nanoid = customAlphabet('1234567890abcdef', 12)
 
+//
+// TRIE LA DATE D'EVENT DE + RECENTE A ANCIENNE
+//
 export const remapData = d => {
     const _d = { ... d}
     _d.dates = _d.dates
@@ -26,12 +29,29 @@ export const remapData = d => {
     return _d
 }
 
+//
+//PREND DATE SANS L'HEURE
+//
 export const stripTime = d => d.split('T')[0]
 
+//
+//SI OBJET VIDE = TRUE SINON FALSE
+//
 export const isEmptyObj = obj => Object.keys(obj).length === 0
 
+
+
 export const initEvent = async (name, author, description, dates) => {
+
+  //
+  //CREE LA DATE AU FORMAT ISO (ANNES MOIS JOURT H M S. MsZ)
+  //
   const created_at = new Date().toISOString()
+  
+  
+  //
+  //STOCKE L'ID GENERER PAR NANOID
+  //
   const id = await nanoid()
 
   return {
