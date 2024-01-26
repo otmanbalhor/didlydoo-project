@@ -47,16 +47,17 @@ body {
   color: rgb(77, 76, 76);
 }
 
-<<<<<<< HEAD
 table, tr, td, th {
-=======
-th,
-td {
->>>>>>> dev
   border: 2px solid black;
   padding: 5px;
 }
 
 table {
   border-collapse: collapse;
+}
+
+th,
+td {
+  border: 2px solid black;
+  padding: 5px;
 }/*# sourceMappingURL=main.css.map */
