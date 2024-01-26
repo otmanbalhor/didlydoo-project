@@ -1,4 +1,6 @@
 import './main.css'
+import { validateForm,resetForm,addDateField } from './assets/modulejs/header';
+import { dltInfos, deleteEvent} from './assets/modulejs/delete';
 // import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.js'
@@ -16,11 +18,59 @@ const main = document.querySelector('.container');
 
 const submit = document.querySelector(".header__div__submit");
 
+const addDateBtn = document.getElementById('addDateBtn');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     getInfos();
-    submit.addEventListener('click', function () { });
+    submit.addEventListener('click', function (event) {
+        event.preventDefault();
+        validateForm()
+            .then(function (data) {
+                console.log("Data successfully sent to API :", data);
+                resetForm();
+                location.reload();
+            })
+            .catch(function (error) {
+                console.error("error :", error);
+            });
+    });
+    addDateBtn.addEventListener('click', function () {
+        addDateField();
+    });;
+
+
 })
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await dltInfos(); // CHARGE LES BTN DE SUPPRESSIONS
+});
+
+const divBtnDlt = document.getElementById('divBtnDlt')
+
+divBtnDlt.addEventListener('click', async (event) => {
+
+    //
+    //LE BTN RECHERCHE L'ID QUI CORRESPOND AU BOUTON PAR RAPPORT A LA DATE DE CREATION DE L'EVENT
+    //
+    const deleteBtn = event.target.closest('button[data-event-id]');
+    
+    if (deleteBtn) {
+        const eventId = deleteBtn.getAttribute('data-event-id');
+
+        //
+        //MSG CONFIRMATION
+        //
+        const confirmation = confirm('Are you sure you want to delete this event?');
+
+        if (confirmation) {
+            await deleteEvent(eventId);
+            deleteBtn.remove();
+            location.reload()
+        }
+    }
+});
+
 
 async function getInfos() {
 
@@ -45,8 +95,6 @@ async function getInfos() {
 
             const datesColumn = data.dates
 
-            console.log(data.dates)
-            console.log(datesColumn);
             const aydee = data.id
 
             getName(table, aydee, datesColumn);
