@@ -1,3 +1,55 @@
+<<<<<<< HEAD
+=======
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__div {
+        background-color: rgb(77, 76, 76);
+        color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        padding: 5px;
+        gap: 5px;
+        width: 450px;
+        text-align: center;
+        align-items: center;
+
+        &__dates {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        &__date {
+            &__btn {
+                text-align: center;
+                background-color: transparent;
+                border: transparent;
+                color: rgb(0, 0, 0);
+                cursor: pointer;
+                font-size: 200%;
+                &:hover {
+                    color: antiquewhite;
+                }
+            }
+        }
+        &__submit{
+            cursor: pointer;
+        }
+    }
+}
+
+#dates {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+>>>>>>> dev
 
 body {
     background-color: rgb(239, 229, 229);
@@ -5,6 +57,7 @@ body {
     
 }
 
+<<<<<<< HEAD
 table,tr,td, th{
     border: 2px solid black;
     padding:5px;
@@ -15,3 +68,10 @@ table{
     border-collapse: collapse;
 }
 
+=======
+th,
+td {
+    border: 2px solid black;
+    padding: 5px;
+}
+>>>>>>> dev

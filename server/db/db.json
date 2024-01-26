@@ -1,5 +1,37 @@
 [
   {
+<<<<<<< HEAD
+=======
+    "id": "1bec69e0992e",
+    "name": "regergqregq",
+    "author": "tsggsg",
+    "description": "qrgqgerqgag",
+    "dates": [
+      "2024-01-27",
+      "2024-01-26",
+      "2024-01-25"
+    ],
+    "created_at": "2024-01-25T15:50:39.024Z",
+    "num_modification": 0,
+    "last_modification": "2024-01-25T15:50:39.024Z",
+    "attendees": []
+  },
+  {
+    "id": "f3012f240e17",
+    "name": "dydlidoo",
+    "author": "aurelien",
+    "description": "date de fin de projet",
+    "dates": [
+      "2024-01-29",
+      "2024-01-26"
+    ],
+    "created_at": "2024-01-25T15:22:57.884Z",
+    "num_modification": 0,
+    "last_modification": "2024-01-25T15:22:57.884Z",
+    "attendees": []
+  },
+  {
+>>>>>>> dev
     "id": "f5b6564b5dc4",
     "name": "My sweet 16",
     "description": "I am going to be 16, let us all party together! Help me pick a date so we can go together",
