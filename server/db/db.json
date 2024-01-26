@@ -1,5 +1,18 @@
 [
   {
+    "id": "6c52e0fc099e",
+    "name": "Didlydoo",
+    "author": "Aurelien",
+    "description": "fin de projet",
+    "dates": [
+      "2024-01-26"
+    ],
+    "created_at": "2024-01-26T13:26:58.911Z",
+    "num_modification": 3,
+    "last_modification": "2024-01-26T15:10:59.464Z",
+    "attendees": []
+  },
+  {
     "id": "f5b6564b5dc4",
     "name": "My sweet 17",
     "description": "I am going to be 16, let us all party together! Help me pick a date so we can go together",
