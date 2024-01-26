@@ -9,23 +9,22 @@
 </head>
 
 <body>
-
   <header class="header">
     <h1 class="header__title">Didlydoo project</h1>
     <div class="header__div">
       <label id="author">Author:</label>
-      <input class="header__div__input" type="text" placeholder="Your name" id="inputAuthor" required>
+      <input class="header__div__input" type="text" placeholder="Your name..." id="inputAuthor" required>
 
       <label id="name">Event:</label>
-      <input class="header__div__input" type="text" placeholder="Your event" id="inputTitle" required>
+      <input class="header__div__input" type="text" placeholder="Your event..." id="inputTitle" required>
 
       <label id="description">Description:</label>
-      <input class="header__div__input" type="text" placeholder="Describes an event" id="inputDescription" required>
-
-      <label id="dates">Dates:</label>
-      <input class="header__div__date" type="date" name="date" id="date">
-      <button id="addDateBtn">Ajouter une date</button>
-
+      <input class="header__div__input" type="text" placeholder="Describes an event..." id="inputDescription" required>
+      <div class="header__div__dates">
+        <label id="dates">Dates:</label>
+        <input class="header__div__date" type="date" name="date" id="date">
+        <button class="header__div__date__btn" id="addDateBtn">+</button>
+      </div>
 
       <input id="submitBtn" class="header__div__submit" type="submit" value="Add an event" />
     </div>
@@ -34,7 +33,7 @@
   <div id="app"></div>
   <script type="module" src="assets/modulejs/header.js" defer></script>
   <script type="module" src="/main.js" defer></script>
-
+  <script type="module" src="assets/modulejs/delete.js" defer></script>
 </body>
 
 </html>
