@@ -1,12 +1,17 @@
-<<<<<<< HEAD
+
 body {
     background-color: rgb(239, 229, 229);
     color: rgb(77, 76, 76);
+    
 }
 
-th,td{
+table,tr,td, th{
     border: 2px solid black;
     padding:5px;
+   
 }
-=======
->>>>>>> dev
+
+table{
+    border-collapse: collapse;
+}
+

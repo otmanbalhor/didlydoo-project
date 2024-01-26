@@ -13,8 +13,6 @@ function NameAndClass(ElementName, ElementClass) {
 }
 
 const main = document.querySelector('.container');
-const name = document.querySelector('.header__title');
-
 
 const submit = document.querySelector(".header__div__submit");
 
@@ -22,11 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     getInfos();
     submit.addEventListener('click', function () { });
-
-   
 })
-
-
 
 async function getInfos() {
 
@@ -41,72 +35,39 @@ async function getInfos() {
 
         datas.forEach(data => {
 
-            const table = document.createElement('table');
+            const table = NameAndClass('table', 'tableau')
             const event = NameAndClass('h2', 'event');
-            const descri = NameAndClass('p','descri');
+            const descri = NameAndClass('p', 'descri');
+            const author = NameAndClass('h3','author')
             event.innerHTML = data.name;
             descri.innerHTML = data.description;
+            author.innerHTML = data.author
 
-            const datesColumn = data.dates.map(datum => datum.date).join('</th><th>');
+            const datesColumn = data.dates
 
-
+            console.log(data.dates)
+            console.log(datesColumn);
             const aydee = data.id
 
-            console.log(aydee);
-            table.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>participant</th>
-                        <th colspan="${data.dates.length}">${datesColumn}</th>
-                    </tr>
-                </thead>
-            `
+            getName(table, aydee, datesColumn);
 
-            getName(table,aydee);
+            const rowHead = document.createElement("tr");
+            const thParticipant = document.createElement("th");
+            rowHead.append(thParticipant);
 
+            data.dates.forEach(date => {
+                const thDate = document.createElement("th");
+                thDate.innerText = date.date;
+                rowHead.append(thDate);
+            });
 
-                let attendees = data.dates.map(name => name.attendees)
-                
-
-                attendees.forEach(name => {
-                    const tbody = document.createElement('tbody');
-    
-                   
-                    const tr = document.createElement('tr');
-                    const td = document.createElement('td');
-
-                    
-                   let thomas = name.map(myName => myName.name)
-
-                    for(let i=0;i<thomas.length;i++){
-
-                        td.innerHTML = thomas[i]
-
-                    }
-                        tbody.append(tr);
-                        tr.append(td);
-                    
-                    
-                 
-                    
-                    /*date.attendees.forEach(attendee => {
-                        const tr = document.createElement('tr');
-                        const td = document.createElement('td');
-                        td.innerHTML = attendee.available;
-                        tbody.append(tr);
-                        tr.append(td);
-    
-                    });*/
-                    table.append(tbody);
-                });
-    
             const division = NameAndClass('div', 'division');
-            
 
             main.append(event);
             main.append(division);
-            event.append(descri);
-            
+            event.append(author);
+            author.append(descri);
+
             division.append(table);
         })
 
@@ -115,38 +76,68 @@ async function getInfos() {
     }
 }
 
-
-async function getName(table,aydee){
+async function getName(table, aydee, eventDates) {
 
     try {
 
         const res = await fetch('http://localhost:3000/api/attendees');
 
-        if(!res.ok){
+        if (!res.ok) {
             throw new Error(`Network response was not ok: ${res.status}`)
         }
 
         const datas = await res.json();
 
-        datas.forEach(data => {
+        let rowHead = document.createElement("tr");
+        let tBody = document.createElement("tbody")
+        let tHead = document.createElement('thead')
 
-            const nom = data.name
+        let thParticipant = document.createElement("th");
+        thParticipant.innerText = "participant";
+        rowHead.append(thParticipant);
 
-            console.log(nom);
-            
-            const id = data.events.map(id=>id.id);
-
-            if(id === aydee){
-
-            }
+        eventDates.forEach(date => {
+            let thDate = document.createElement("th");
+            thDate.innerText = date.date;
+            rowHead.append(thDate);
         });
 
-   
-        
+        tHead.append(rowHead);
+
+        let participants = datas.filter(data => data.events.some(ev => ev.id === aydee));
+
+        participants.forEach(participant => {
+            let row = document.createElement("tr");
+            let tData = document.createElement("td");
+
+            tData.innerText = participant.name;
+            row.append(tData);
+
+            eventDates.forEach(date => {
+
+                const event = participant.events.find(event => event.id === aydee);
+
+                let availableData = document.createElement("td");
+                if (event && event.dates.some(d => d.date === date.date && d.available)) {
+
+                    availableData.innerText = "✅";
+                    availableData.style.textAlign ="center"
+                } else {
+
+                    availableData.innerText = "❌";
+                    availableData.style.textAlign ="center"
+                }
+
+                row.append(availableData);
+            });
+
+            tBody.append(row);
+        })
+        table.append(tBody);
+        table.append(tHead)
+
     } catch (error) {
         console.error(error);
     }
 }
-
-
 

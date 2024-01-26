@@ -3,7 +3,11 @@ body {
   color: rgb(77, 76, 76);
 }
 
-th, td {
+table, tr, td, th {
   border: 2px solid black;
   padding: 5px;
+}
+
+table {
+  border-collapse: collapse;
 }/*# sourceMappingURL=main.css.map */
