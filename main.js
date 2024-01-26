@@ -1,6 +1,7 @@
 import './main.css'
 import { validateForm,resetForm,addDateField } from './assets/modulejs/header';
 import { dltInfos, deleteEvent} from './assets/modulejs/delete';
+import { addAvailable, addParticipants } from './assets/modulejs/addPartic';
 // import javascriptLogo from './javascript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.js'
@@ -23,6 +24,7 @@ const addDateBtn = document.getElementById('addDateBtn');
 document.addEventListener('DOMContentLoaded', () => {
 
     getInfos();
+
     submit.addEventListener('click', function (event) {
         event.preventDefault();
         validateForm()
@@ -38,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addDateBtn.addEventListener('click', function () {
         addDateField();
     });;
-
 
 })
 
@@ -117,6 +118,7 @@ async function getInfos() {
             author.append(descri);
 
             division.append(table);
+
         })
 
     } catch (error) {
@@ -156,7 +158,11 @@ async function getName(table, aydee, eventDates) {
 
         participants.forEach(participant => {
             let row = document.createElement("tr");
+            
             let tData = document.createElement("td");
+            tData.addEventListener("click", function() {
+                addParticipants(this);
+            });
 
             tData.innerText = participant.name;
             row.append(tData);
@@ -166,6 +172,11 @@ async function getName(table, aydee, eventDates) {
                 const event = participant.events.find(event => event.id === aydee);
 
                 let availableData = document.createElement("td");
+
+                availableData.addEventListener("click", function() {
+                    addAvailable(this);
+                });
+
                 if (event && event.dates.some(d => d.date === date.date && d.available)) {
 
                     availableData.innerText = "✅";
@@ -179,6 +190,7 @@ async function getName(table, aydee, eventDates) {
                 row.append(availableData);
             });
 
+            
             tBody.append(row);
         })
         table.append(tBody);
